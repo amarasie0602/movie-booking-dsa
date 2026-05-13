@@ -1,19 +1,19 @@
 #include <cstddef>
 #include "SinglyLinkedListInt.h"
 
-SinglyLinkedListInt::SinglyLinkedListInt()
+SinglyLinkedListInt::SinglyLinkedListInt()      // Constructor to initialize member variables
 {
     head = NULL;
     tail = NULL;
     size = 0;
 }
 
-SinglyLinkedListInt::~SinglyLinkedListInt()
+SinglyLinkedListInt::~SinglyLinkedListInt()    // Destructor to clean up resources
 {
     clear();
 }
 
-void SinglyLinkedListInt::insertLast(int value)
+void SinglyLinkedListInt::insertLast(int value)   // Insert a new value at the end of the list  
 {
     Node *newNode = new Node;
     newNode->value = value;
@@ -33,7 +33,7 @@ void SinglyLinkedListInt::insertLast(int value)
     size++;
 }
 
-int SinglyLinkedListInt::removeValue(int value)
+int SinglyLinkedListInt::removeValue(int value)     // Remove the first occurrence of the specified value from the list, returning 1 if removed and 0 if not found
 {
     Node *current = head;
     Node *previous = NULL;
@@ -68,7 +68,7 @@ int SinglyLinkedListInt::removeValue(int value)
     return 0;
 }
 
-int SinglyLinkedListInt::contains(int value) const
+int SinglyLinkedListInt::contains(int value) const     // Check if the list contains the specified value, returning 1 if found and 0 if not found
 {
     Node *current = head;
     while (current != NULL)
@@ -82,7 +82,7 @@ int SinglyLinkedListInt::contains(int value) const
     return 0;
 }
 
-void SinglyLinkedListInt::print() const
+void SinglyLinkedListInt::print() const     // Print the contents of the list to the console
 {
     Node *current = head;
     if (current == NULL)
@@ -102,7 +102,7 @@ void SinglyLinkedListInt::print() const
     cout << endl;
 }
 
-void SinglyLinkedListInt::clear()
+void SinglyLinkedListInt::clear()      // Clear the list and free all resources
 {
     Node *current = head;
     Node *nextNode;
@@ -119,12 +119,12 @@ void SinglyLinkedListInt::clear()
     size = 0;
 }
 
-SinglyLinkedListInt::Node *SinglyLinkedListInt::getHead() const
+SinglyLinkedListInt::Node *SinglyLinkedListInt::getHead() const       // Get the head node of the list
 {
     return head;
 }
 
-int SinglyLinkedListInt::getSize() const
+int SinglyLinkedListInt::getSize() const        // Get the current size of the list
 {
     return size;
 }

@@ -22,13 +22,13 @@ public:
     SinglyLinkedListInt();
     ~SinglyLinkedListInt();
 
-    void insertLast(int value);
-    int removeValue(int value);
-    int contains(int value) const;
-    void print() const;
-    void clear();
+    void insertLast(int value);     // Insert a new value at the end of the list
+    int removeValue(int value);     // Remove the first occurrence of the specified value from the list, returning 1 if removed and 0 if not found
+    int contains(int value) const;  // Check if the list contains the specified value, returning 1 if found and 0 if not found
+    void print() const;             // Print the contents of the list to the console
+    void clear();                   // Clear the list and free all resources
 
-    Node *getHead() const;
+    Node *getHead() const;         
     int getSize() const;
 };
 
