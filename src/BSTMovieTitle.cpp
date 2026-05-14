@@ -1,24 +1,23 @@
 #include <cstring>
-
-
 #include "BSTMovieTitle.h"
-BSTMovieTitle::BSTMovieTitle()
+
+BSTMovieTitle::BSTMovieTitle() // Constructor to initialize the BST with default values
 {
     root = NULL;
     size = 0;
 }
 
-BSTMovieTitle::~BSTMovieTitle()
+BSTMovieTitle::~BSTMovieTitle() // Destructor to delete all nodes when the BST is destroyed
 {
     clear();
 }
 
-void BSTMovieTitle::insert(int movieId, const std::string &title)
+void BSTMovieTitle::insert(int movieId, const std::string &title)// Insert a new movie into the BST 
 {
     Node *newNode = new Node;
     newNode->movieId = movieId;
     newNode->title = title;
-    newNode->titleLower = toLower(title);
+    newNode->titleLower = toLower(title); //convert title to lowercase for case-insensitive comparison
     newNode->left = NULL;
     newNode->right = NULL;
     newNode->parent = NULL;
@@ -34,7 +33,7 @@ void BSTMovieTitle::insert(int movieId, const std::string &title)
     Node *parentNode = NULL;
     int compareResult = 0;
 
-    while (current != NULL)
+    while (current != NULL) // Traverse the BST
     {
         parentNode = current;
         if (newNode->titleLower < current->titleLower)
@@ -54,8 +53,7 @@ void BSTMovieTitle::insert(int movieId, const std::string &title)
         }
         else
         {
-            // Duplicate title: reject the insert to keep the BST consistent.
-            delete newNode;
+            delete newNode; //duplicate title
             return;
         }
     }
@@ -73,7 +71,7 @@ void BSTMovieTitle::insert(int movieId, const std::string &title)
     size++;
 }
 
-int BSTMovieTitle::searchExact(const std::string &title) const
+int BSTMovieTitle::searchExact(const std::string &title) const // Search for a movie with an exact title match
 {
     Node *current = root;
     std::string searchTitle = toLower(title);
@@ -97,25 +95,25 @@ int BSTMovieTitle::searchExact(const std::string &title) const
     return -1;
 }
 
-void BSTMovieTitle::inOrderList(int outIds[], int &count) const
+void BSTMovieTitle::inOrderList(int outIds[], int &count) const //in-order traversal to list all movie IDs
 {
     count = 0;
     inOrderFill(root, outIds, count);
 }
 
-void BSTMovieTitle::clear()
+void BSTMovieTitle::clear() //delete all nodes in the BSST
 {
     clearNode(root);
     root = NULL;
     size = 0;
 }
 
-int BSTMovieTitle::getSize() const
+int BSTMovieTitle::getSize() const 
 {
     return size;
 }
 
-void BSTMovieTitle::clearNode(Node *node)
+void BSTMovieTitle::clearNode(Node *node) 
 {
     if (node == NULL)
     {
@@ -127,7 +125,7 @@ void BSTMovieTitle::clearNode(Node *node)
     delete node;
 }
 
-void BSTMovieTitle::inOrderFill(Node *node, int outIds[], int &count) const
+void BSTMovieTitle::inOrderFill(Node *node, int outIds[], int &count) const //IN-order traversal to fill the output array with movie IDs
 {
     if (node == NULL)
     {
