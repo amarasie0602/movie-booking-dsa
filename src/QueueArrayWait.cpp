@@ -1,6 +1,7 @@
 #include <iostream>
 #include "QueueArrayWait.h"
 
+// Constructor: Initialize queue with empty state and no allocated memory
 QueueArrayWait::QueueArrayWait()
 {
     data = NULL;
@@ -10,11 +11,13 @@ QueueArrayWait::QueueArrayWait()
     rear = -1;
 }
 
+// Destructor: Clean up allocated memory when queue is destroyed
 QueueArrayWait::~QueueArrayWait()
 {
     clear();
 }
 
+// Initialize queue: Allocate memory and set capacity for queue operations
 void QueueArrayWait::init(int capacityValue)
 {
     clear();
@@ -30,6 +33,7 @@ void QueueArrayWait::init(int capacityValue)
     rear = -1;
 }
 
+// Enqueue: Add new wait request to rear of queue using circular array logic
 int QueueArrayWait::enQueue(const WaitRequest &value)
 {
     if (isFull())
@@ -43,6 +47,7 @@ int QueueArrayWait::enQueue(const WaitRequest &value)
     return 1;
 }
 
+// Dequeue: Remove and return wait request from front of queue
 int QueueArrayWait::deQueue(WaitRequest &outValue)
 {
     if (isEmpty())
@@ -63,6 +68,7 @@ int QueueArrayWait::deQueue(WaitRequest &outValue)
     return 1;
 }
 
+// Peek: View front element without removing it from queue
 int QueueArrayWait::peek(WaitRequest &outValue) const
 {
     if (isEmpty())
@@ -74,16 +80,19 @@ int QueueArrayWait::peek(WaitRequest &outValue) const
     return 1;
 }
 
+// Check if queue is empty
 int QueueArrayWait::isEmpty() const
 {
     return size == 0;
 }
 
+// Check if queue has reached its maximum capacity
 int QueueArrayWait::isFull() const
 {
     return size == capacity;
 }
 
+// Print: Display all wait requests in queue from front to rear
 void QueueArrayWait::print() const
 {
     int i;
@@ -102,6 +111,7 @@ void QueueArrayWait::print() const
     }
 }
 
+// Clear: Deallocate memory and reset queue to initial empty state
 void QueueArrayWait::clear()
 {
     if (data != NULL)
@@ -116,16 +126,19 @@ void QueueArrayWait::clear()
     rear = -1;
 }
 
+// Get the current number of wait requests in queue
 int QueueArrayWait::getSize() const
 {
     return size;
 }
 
+// Get the array index of the front element
 int QueueArrayWait::getFrontIndex() const
 {
     return front;
 }
 
+// Get the array index of the rear element
 int QueueArrayWait::getRearIndex() const
 {
     return rear;
